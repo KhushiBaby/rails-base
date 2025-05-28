@@ -227,9 +227,9 @@ build_and_test() {
     echo "✅ All tests passed!"
 
     # Tag for pushing
-    docker tag rails-base:test ghcr.io/sriniarul/rails-base:latest
+    docker tag rails-base:test ghcr.io/khushibaby/rails-base:latest
 
-    echo "🚀 Ready to push: docker push ghcr.io/sriniarul/rails-base:latest"
+    echo "🚀 Ready to push: docker push ghcr.io/khushibaby/rails-base:latest"
 }
 
 # Main execution
@@ -241,10 +241,10 @@ echo "
 📋 Summary:
 - ✅ Generated Dockerfile.base.optimized with available packages
 - ✅ Built and tested base image
-- 🏷️  Tagged as ghcr.io/sriniarul/rails-base:latest
+- 🏷️  Tagged as ghcr.io/khushibaby/rails-base:latest
 
 Next steps:
-1. Push the image: docker push ghcr.io/sriniarul/rails-base:latest
-2. Update your app Dockerfiles to use: FROM ghcr.io/sriniarul/rails-base:latest
+1. Push the image: docker push ghcr.io/khushibaby/rails-base:latest
+2. Update your app Dockerfiles to use: FROM ghcr.io/khushibaby/rails-base:latest
 3. Enjoy super fast builds! 🚀
 "

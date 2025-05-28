@@ -49,7 +49,7 @@ test_with_base_image() {
     docker run --rm -it \
         -v $(pwd):/app \
         -w /app \
-        ghcr.io/sriniarul/rails-base:latest \
+        ghcr.io/khushibaby/rails-base:latest \
         sh -c "
             echo '=== Bundle Config ==='
             bundle config
@@ -66,7 +66,7 @@ build_with_gem_fixes() {
 
     # Create temporary Dockerfile with gem fixes
     cat > Dockerfile.gem-fixes << 'EOF'
-FROM ghcr.io/sriniarul/rails-base:latest
+FROM ghcr.io/khushibaby/rails-base:latest
 
 ENV RAILS_ENV=production
 ENV BUNDLE_SILENCE_ROOT_WARNING=1
@@ -134,14 +134,14 @@ DOCKER_BUILDKIT=1 docker build --progress=plain -t e-suchi:debug . 2>&1 | tee bu
 check_base_image() {
     echo "🔍 Checking base image accessibility..."
 
-    if docker pull ghcr.io/sriniarul/rails-base:latest; then
+    if docker pull ghcr.io/khushibaby/rails-base:latest; then
         echo "✅ Base image accessible"
 
         # Test base image
         echo "🧪 Testing base image functionality..."
-        docker run --rm ghcr.io/sriniarul/rails-base:latest ruby --version
-        docker run --rm ghcr.io/sriniarul/rails-base:latest bundle --version
-        docker run --rm ghcr.io/sriniarul/rails-base:latest node --version
+        docker run --rm ghcr.io/khushibaby/rails-base:latest ruby --version
+        docker run --rm ghcr.io/khushibaby/rails-base:latest bundle --version
+        docker run --rm ghcr.io/khushibaby/rails-base:latest node --version
 
     else
         echo "❌ Cannot access base image"
