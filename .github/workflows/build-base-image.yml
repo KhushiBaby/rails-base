@@ -46,7 +46,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
+          images: ghcr.io/khushibaby/rails-base
           tags: |
             type=raw,value=latest
             type=raw,value=${{ github.event.inputs.tag || 'latest' }}
@@ -68,14 +68,14 @@ jobs:
 
       - name: Test base image
         run: |
-          docker run --rm ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest ruby --version
-          docker run --rm ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest node --version
-          docker run --rm ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest bundle --version
+          docker run --rm ghcr.io/khushibaby/rails-base:latest ruby --version
+          docker run --rm ghcr.io/khushibaby/rails-base:latest node --version
+          docker run --rm ghcr.io/khushibaby/rails-base:latest bundle --version
 
       - name: Generate build summary
         run: |
           echo "## Base Image Build Summary" >> $GITHUB_STEP_SUMMARY
-          echo "- **Image**: \`${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Image**: \`ghcr.io/khushibaby/rails-base\`" >> $GITHUB_STEP_SUMMARY
           echo "- **Tags**: \`${{ steps.meta.outputs.tags }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- **Platforms**: linux/amd64, linux/arm64" >> $GITHUB_STEP_SUMMARY
           echo "- **Built at**: $(date -u)" >> $GITHUB_STEP_SUMMARY
